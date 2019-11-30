@@ -13,6 +13,13 @@
         <action name="logOut" class="haanh.struts2.LogOutAction">
             <result name="success">login.jsp</result>
         </action>
+        <action name="" class="haanh.struts2.PageHomeAction">
+            <result name="success">index.jsp</result>
+        </action>
+        <action name="searchHotels" class="haanh.struts2.SearchHotelsAction">
+            <result name="success">index.jsp</result>
+            <result name="input">index.jsp</result>
+        </action>   
         <action name="register" class="haanh.struts2.RegisterAction">
             <exception-mapping exception="java.sql.SQLException" result="input"/>
             <result name="success">login.jsp</result>

@@ -18,8 +18,13 @@ import javax.sql.DataSource;
  */
 public class DBUtils {
     
+    //Roles
     public static final String ROLE_ADMIN = "AD001";
     public static final String ROLE_CUSTOMER = "U001";
+    
+    //Order Status, Schedule Status
+    public static final int ORDER_STATUS_BOOKED = 0;
+    public static final int ORDER_STATUS_CANCELED = -1;
     
     public static Connection getConnection() throws NamingException, SQLException {
         Context context = new InitialContext();

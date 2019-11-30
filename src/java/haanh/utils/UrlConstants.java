@@ -17,6 +17,8 @@ public class UrlConstants {
     
     //Attributes   
     public static final String ATTR_CURRENT_USER = "currentUser";
+    public static final String ATTR_AREAS = "areas";
+    //Attributes message
     public static final String ATTR_MESSAGE = "message";
     
     

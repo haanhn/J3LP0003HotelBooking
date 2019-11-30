@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+                
+<validators>
+    <field name="fromDate">
+        <field-validator type="required">
+            <message>Require From Date</message>
+        </field-validator>
+        <field-validator type="date">
+            <param name="min">currentDate</param>
+            <message>Booking is only available from today</message>
+        </field-validator>
+    </field>
+    <field name="toDate">
+        <field-validator type="required">
+            <message>Require To Date</message>
+        </field-validator>
+        <field-validator type="date">
+            <param name="min">currentDate</param>
+            <message>To Date >= From Date</message>
+        </field-validator>
+    </field>
+    <field name="roomAmount">
+        <field-validator type="required">
+            <message>Require Amount of Rooms</message>
+        </field-validator>
+        <field-validator type="int">
+            <param name="min">1</param>
+            <message>Minimum room amount is 1</message>
+        </field-validator>
+    </field>
+</validators>
