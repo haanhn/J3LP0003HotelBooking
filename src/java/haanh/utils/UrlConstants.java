@@ -20,6 +20,7 @@ public class UrlConstants {
     public static final String ATTR_AREAS = "areas";
     //Attributes message
     public static final String ATTR_MESSAGE = "message";
+    public static final String ATTR_MESSAGE_DATE = "messageDate";
     
     
 }

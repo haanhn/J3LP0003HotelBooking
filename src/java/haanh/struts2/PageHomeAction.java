@@ -20,7 +20,9 @@ public class PageHomeAction {
     
     private Map<Integer, String> areas = new HashMap<>();
     private Map<Integer, String> roomTypes = new HashMap<>();
-    private Date currentDate;
+    private Date fromDate;
+    private Date toDate;
+    private Integer roomAmount;
     
     public PageHomeAction() {
     }
@@ -34,7 +36,10 @@ public class PageHomeAction {
         
         areas = areaDAO.getAllAreas();
         roomTypes = typeDAO.getAllRoomTypes();
-        currentDate = new Date(System.currentTimeMillis());
+        Date currentDate = new Date(System.currentTimeMillis());
+        fromDate = currentDate;
+        toDate = currentDate;
+        roomAmount = 1;
         
         return result;
     }
@@ -55,11 +60,27 @@ public class PageHomeAction {
         this.roomTypes = roomTypes;
     }
 
-    public Date getCurrentDate() {
-        return currentDate;
+    public Date getFromDate() {
+        return fromDate;
     }
 
-    public void setCurrentDate(Date currentDate) {
-        this.currentDate = currentDate;
+    public void setFromDate(Date fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    public Date getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(Date toDate) {
+        this.toDate = toDate;
+    }
+
+    public Integer getRoomAmount() {
+        return roomAmount;
+    }
+
+    public void setRoomAmount(Integer roomAmount) {
+        this.roomAmount = roomAmount;
     }
 }

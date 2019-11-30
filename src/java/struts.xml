@@ -26,5 +26,8 @@
             <result name="fail">register.jsp</result>
             <result name="input">register.jsp</result>
         </action>
+        <action name="getMyOrders" class="haanh.struts2.GetMyOrdersAction">
+            <result name="success">list-orders.jsp</result>
+        </action>
     </package>
 </struts>

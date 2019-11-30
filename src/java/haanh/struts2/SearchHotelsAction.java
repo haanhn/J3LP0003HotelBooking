@@ -14,43 +14,63 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.naming.NamingException;
+import org.apache.struts2.ServletActionContext;
 
 /**
  *
  * @author HaAnh
  */
 public class SearchHotelsAction extends ActionSupport {
-    
+
     private Map<Integer, String> areas = new HashMap<>();
     private Map<Integer, String> roomTypes = new HashMap<>();
-    
+
     private Integer area;
     private String hotelName;
     private Date fromDate;
     private Date toDate;
     private Integer roomType;
     private Integer roomAmount;
-    
+
     public SearchHotelsAction() {
     }
-    
+
     public String execute() throws Exception {
         String result = UrlConstants.STRUTS2_RESULT_SUCCESS;
-        
-        getAreasAndRoomTypes();
         System.out.println("SearchHotels");
-        
+        System.out.println("fromDate" + fromDate.toString());
+        System.out.println("fromDate" + toDate.toString());
+
+        if (validateFromAndToDate()) {
+            
+        }
+        getAreasAndRoomTypes();
         return result;
     }
 
     private void getAreasAndRoomTypes() throws SQLException, NamingException {
         AreaDAO areaDAO = new AreaDAO();
         RoomTypeDAO typeDAO = new RoomTypeDAO();
-        
+
         areas = areaDAO.getAllAreas();
         roomTypes = typeDAO.getAllRoomTypes();
     }
-    
+
+    private boolean validateFromAndToDate() {
+        Date currentDate = new Date(System.currentTimeMillis());
+        boolean valid = true;
+        if (fromDate.compareTo(currentDate) < 0) {
+            valid = false;
+            ServletActionContext.getRequest().setAttribute(UrlConstants.ATTR_MESSAGE_DATE, "From Date only valid from today");
+        } else {
+            valid = fromDate.compareTo(toDate) <= 0;
+            if (!valid) {
+                ServletActionContext.getRequest().setAttribute(UrlConstants.ATTR_MESSAGE_DATE, "From Date >= To Date");
+            }
+        }
+        return valid;
+    }
+
     public Map<Integer, String> getAreas() {
         return areas;
     }
@@ -114,5 +134,5 @@ public class SearchHotelsAction extends ActionSupport {
     public void setRoomAmount(Integer roomAmount) {
         this.roomAmount = roomAmount;
     }
-        
+
 }

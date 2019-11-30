@@ -21,14 +21,17 @@
         
         <s:form action="searchHotels" method="GET">
             <s:select name="area" label="Area" list="areas" listKey="key" listValue="value"/>
-            <s:textfield name="hotelName" label="Hotel Name" />
-            <s:textfield name="fromDate" label="From Date" value="%{currentDate}" />
-            <s:textfield name="toDate" label="To Date" value="%{currentDate}" />
+            <s:textfield name="hotelName" label="Hotel Name" value="%{hotelName}"/>
+            <s:textfield name="fromDate" label="From Date" value="%{fromDate}" />
+            <s:textfield name="toDate" label="To Date" value="%{toDate}" />
             <s:select name="roomType" label="Room Type" list="roomTypes" listKey="key" listValue="value"/>
-            <s:textfield name="roomAmount" label="Room Amount" value="1"/>
+            <s:textfield name="roomAmount" label="Room Amount" value="%{roomAmount}"/>
             
-            <s:hidden name="currentDate" value="%{currentDate}"/>
             <s:submit value="Search"/>
         </s:form>
+        
+        <s:if test="%{#request.messageDate != null}">
+            <div class="show-input-err">${messageDate}</div>
+        </s:if>
     </body>
 </html>

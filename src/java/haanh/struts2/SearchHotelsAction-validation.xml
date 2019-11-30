@@ -9,19 +9,19 @@
         <field-validator type="required">
             <message>Require From Date</message>
         </field-validator>
-        <field-validator type="date">
-            <param name="min">currentDate</param>
-            <message>Booking is only available from today</message>
-        </field-validator>
+        <!--<field-validator type="date">-->
+            <!--<param name="min">${currentDate}</param>-->
+            <!--<message>Booking is only available from today</message>-->
+        <!--</field-validator>-->
     </field>
     <field name="toDate">
         <field-validator type="required">
             <message>Require To Date</message>
         </field-validator>
-        <field-validator type="date">
-            <param name="min">currentDate</param>
-            <message>To Date >= From Date</message>
-        </field-validator>
+        <!--<field-validator type="date">-->
+            <!--<param name="min">${currentDate}</param>-->
+            <!--<message>To Date >= From Date</message>-->
+        <!--</field-validator>-->
     </field>
     <field name="roomAmount">
         <field-validator type="required">
