@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+<validators>
+    <field name="email">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>Required email</message>
+        </field-validator>
+        <field-validator type="email">
+            <message>
+                Email format: abc@xyz.xyt
+            </message>
+        </field-validator>
+    </field>
+    
+    <field name="password">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>
+                Required password
+            </message>
+        </field-validator>
+        <field-validator type="stringlength">
+            <param name="trim">true</param>
+            <param name="minLength">5</param>
+            <param name="maxLength">20</param>
+            <message>
+                Password length from 5-20 characters
+            </message>
+        </field-validator>
+    </field>
+    
+    <field name="confirm">
+        <field-validator type="fieldexpression">
+            <param name="expression">confirm==password</param>
+            <message>Confirm must match password</message>
+        </field-validator>
+    </field>
+    
+    <field name="fullname">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>Required fullname</message>
+        </field-validator>
+    </field>
+    
+    <field name="phone">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>Required Phone</message>
+        </field-validator>
+        <field-validator type="regex">
+            <param name="expression">[0-9]{8}</param>
+            <message>Phone number allows only digits length 8-15</message>
+        </field-validator>
+    </field>
+    
+    <field name="address">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>Required address</message>
+        </field-validator>
+    </field>
+</validators>
