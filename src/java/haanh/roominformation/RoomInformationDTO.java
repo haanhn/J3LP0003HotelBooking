@@ -12,6 +12,7 @@ package haanh.roominformation;
 public class RoomInformationDTO {
     
     private Integer id;
+    private String name;
     private Integer totalRooms;
     private String description;
     private Integer hotelId;
@@ -26,6 +27,14 @@ public class RoomInformationDTO {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getTotalRooms() {

@@ -13,8 +13,10 @@
         <title>Hotel Booking</title>
     </head>
     <body>
-        <!--<s-->
-        <h1><a href="/J3LP0002BookStore">Hotel Booking</a></h1>
+        <s:url  var="homeLink" action="pageHome"></s:url>
+        <h1>
+            <s:a href="%{homeLink}">Hotel Booking</s:a>
+        </h1>
         <s:if test="%{#session.currentUser != null}">
             <div class="box-welcome">
                 Welcome <s:property value="%{#session.currentUser.fullname}"/>
@@ -27,18 +29,14 @@
                     <a href="cart-detail.jsp">View Cart</a>
                 </li>
             </c:if>
-            <c:if test="${currentUser.roleId eq 'AD001'}">
-                <li>
-                    <c:url var="getAllBooksLink" value="/admin/getAllBooks">
-                </c:url>
-                <a href="${getAllBooksLink}">Admin Page</a>
-                </li>
-            </c:if>
             <s:if test="%{#session.currentUser != null}">
+                <li>
+                    <s:url  var="getOrderLink" action="getMyOrders"></s:url>
+                    <s:a href="%{getOrderLink}">Booking history</s:a>
+                </li>
                 <li>
                     <s:url  var="logOutLink" action="logOut"></s:url>
                     <s:a href="%{logOutLink}">Log Out</s:a>
-                    <%--<s:iterator--%> 
                 </li>
             </s:if>
             <s:if test="%{#session.currentUser == null}">
@@ -49,7 +47,6 @@
                 <li>
                     <s:url var="registerLink" value="register.jsp"></s:url>
                     <s:a href="%{registerLink}">Register</s:a>
-                    <!--???: Tai sao o day khong can #-->
                 </li>
             </s:if>
         </ul>

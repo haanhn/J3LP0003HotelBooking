@@ -54,6 +54,28 @@ public class OrderDAO {
         return list;
     }
     
+    public void cancelOrder(int orderId) throws NamingException, SQLException {
+        try {
+            String sql = "update [Order] set Status=? where Id=?";
+            con = DBUtils.getConnection();
+            stm = con.prepareStatement(sql);
+            stm.setInt(1, DBUtils.ORDER_STATUS_CANCELED);
+            stm.setInt(2, orderId);
+            
+            stm.executeUpdate();
+            
+            String sqlCancelRoomSchedule = "update RoomSchedule set Status=? where OrderId=?";
+            stm = con.prepareStatement(sqlCancelRoomSchedule);
+            stm.setInt(1, DBUtils.ORDER_STATUS_CANCELED);
+            stm.setInt(2, orderId);
+            
+            stm.executeUpdate();
+        } finally {
+            closeConnection();
+        }
+        
+    }
+    
     private void closeConnection() throws SQLException {
         if (rs != null) {
             rs.close();

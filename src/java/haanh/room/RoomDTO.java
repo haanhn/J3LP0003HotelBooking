@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class RoomDTO implements Serializable {
     
     private Integer id;
-    private String name;
+    private Integer roomInfoId;
 
     public RoomDTO() {
     }
@@ -27,11 +27,11 @@ public class RoomDTO implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Integer getRoomInfoId() {
+        return roomInfoId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRoomInfoId(Integer roomInfoId) {
+        this.roomInfoId = roomInfoId;
     }
 }

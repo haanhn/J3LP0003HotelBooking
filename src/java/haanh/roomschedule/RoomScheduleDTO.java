@@ -16,6 +16,7 @@ public class RoomScheduleDTO implements Serializable {
     
     private Integer id;
     private Integer roomId;
+    private Integer orderId;
     private Date fromDate;
     private Date toDate;
     private Integer status;
@@ -37,6 +38,14 @@ public class RoomScheduleDTO implements Serializable {
 
     public void setRoomId(Integer roomId) {
         this.roomId = roomId;
+    }
+
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 
     public Date getFromDate() {

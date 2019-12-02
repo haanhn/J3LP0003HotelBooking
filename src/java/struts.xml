@@ -6,19 +6,26 @@
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default" namespace="/">
         <action name="login" class="haanh.struts2.LoginAction">
-            <result name="success">index.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">pageHome</param>
+            </result>
             <result name="fail">login.jsp</result>
             <result name="input">login.jsp</result>
         </action>
         <action name="logOut" class="haanh.struts2.LogOutAction">
-            <result name="success">login.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">pageHome</param>
+            </result>
         </action>
         <action name="" class="haanh.struts2.PageHomeAction">
             <result name="success">index.jsp</result>
         </action>
+        <action name="pageHome" class="haanh.struts2.PageHomeAction">
+            <result name="success">index.jsp</result>
+        </action>
         <action name="searchHotels" class="haanh.struts2.SearchHotelsAction">
             <result name="success">index.jsp</result>
-            <result name="input">index.jsp</result>
+            <result name="input" type="chain">pageHome</result>
         </action>   
         <action name="register" class="haanh.struts2.RegisterAction">
             <exception-mapping exception="java.sql.SQLException" result="input"/>
@@ -28,6 +35,14 @@
         </action>
         <action name="getMyOrders" class="haanh.struts2.GetMyOrdersAction">
             <result name="success">list-orders.jsp</result>
+        </action>
+        <action name="cancelOrder" class="haanh.struts2.CancelOrderAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">getMyOrders</param>
+            </result>
+        </action>
+        <action name="getRoomsOfHotel" class="haanh.struts2.GetListRoomInfoOfHotelAction">
+            <result name="success" >list-room-infos-of-hotel.jsp</result>
         </action>
     </package>
 </struts>

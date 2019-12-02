@@ -33,5 +33,28 @@
         <s:if test="%{#request.messageDate != null}">
             <div class="show-input-err">${messageDate}</div>
         </s:if>
+            
+        <s:if test="%{hotels != null && hotels.size()>0}">
+            <s:iterator value="hotels">
+                <div>
+                    <s:if test="%{photo != null}">
+                    <s:url var="imgLink" value="%{photo}"></s:url> 
+                    <img src="<s:property value='%{imgLink}'/>"/>
+                    </s:if>
+                    <s:property value="name"/>
+                    <s:property value="photo"/>
+                    <s:property value="address"/>
+                    <s:url var="getRoomsLink" action="getRoomsOfHotel">
+                        <s:param name="hotelId" value="id"/>
+                        <s:param name="fromDate" value="%{fromDate}"/>
+                        <s:param name="toDate" value="%{toDate}"/>
+                        <s:param name="roomType" value="roomType"/>
+                    </s:url> 
+                    <s:a href="%{getRoomsLink}">View Rooms</s:a>
+
+                </div>
+            </s:iterator>
+        </s:if>
+        <div class="message">${message}</div>
     </body>
 </html>

@@ -16,6 +16,7 @@ public class HotelDTO implements Serializable {
     private Integer id;
     private String name;
     private String photo;
+    private String address;
     private Integer areaId;
 
     public HotelDTO() {
@@ -43,6 +44,14 @@ public class HotelDTO implements Serializable {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Integer getAreaId() {

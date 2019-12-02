@@ -49,11 +49,18 @@
                             </td>
                             <td>
                                 <s:if test="status == 0">
-                                    <s:url  var="cancelOrderLink" action="cancelOrder">
-                                        <s:param name="orderId" value="id"/>
-                                    </s:url>
-                                    <s:a href="%{cancelOrderLink}">Cancel Order</s:a>
+                                    <%--<s:url  var="cancelOrderLink" action="cancelOrder">--%>
+                                        <%--<s:param name="orderId" value="id"/>--%>
+                                    <%--</s:url>--%>
+                                    <%--<s:a href="%{cancelOrderLink}">Cancel Order</s:a>--%>
+
+                                    <form action="cancelOrder" method="POST">
+                                        <s:hidden name="orderId" value="%{id}"/>
+                                        <input type="submit" value="Cancel" onclick="return confirm('Do you want to cancel order?')" />
+                                    </form>
                                 </s:if>
+
+
                             </td>
                         </tr>
                     </s:iterator>
@@ -61,5 +68,8 @@
             </table>
 
         </s:if>
+        <s:else>
+            <div class="message">You have not booked anything</div>
+        </s:else>
     </body>
 </html>
